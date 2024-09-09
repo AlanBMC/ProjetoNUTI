@@ -24,22 +24,41 @@ Este projeto foi desenvolvido como parte do teste prático para a Nuti, seguindo
 ![Bootstrap](https://img.shields.io/badge/Python-D7CB25?style=plastic&logo=python&logoColor=blue)
 
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-E34F26?style=plastic&logo=html5&logoColor=white)
+
 ## Screenshots
+
 ### tela inicial
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="print1.jpg" width="500px">
 
 ### Seção - pesquisa
 - Seção dedicica fornecer dados para busca de contratos
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+  
+<img src="print 2.png" width="500px">
+
 ### Seção - resultado da pesquisa
 - Cards com scroll horizontal
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+  
+<img src="print 3.png" width="500px">
+
 ### Seção - Modal: ver mais
 - Contratos com muitas merece uma atenção especial, entao foi decidido que seria melhor criar um modal para visualizção completa dos dados.
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+  
+<img src="print 4.png" width="500px">
+
 ### Seção - procurar nos resultados da pesquisa
 - Dentro da pesquisa podemos querer ver um contrato em especifico, entao essa função criada para facilidade a usabilidade do site.
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-## Autores
+  
+<img src="print5.png" width="500px">
 
-- [@Alan Bruno Morais Costa](https://github.com/AlanBMC)
+
+## Sobre o autor
+
+<!-- Coloque seu nome, uma foto sua e uma pequena bio sobre você na seguinte tabela: -->
+|  |  |
+|:-------------:|:------------------------------------------------------------:|
+|  <img src="EU2.jpg" width="150px"></br> **Alan Bruno Morais Costa** | 
+Me chamo Alan, sou estudante de Ciências da Computação na Universidade Federal de Mato Grosso (UFMT). Este repositório contém o projeto prático para o teste da Nuti. A Nuti é um projeto prático que funciona como consultor de contratos públicos, realizando consultas de contratos por intervalo de datas e CNPJ, além de otimizar a organização e busca por contratantes.  |
+
+- **Email:** alanbrunomoraescosta18@hotmail.com
+- **LinkedIn:** [Alan  LinkedIn](https://www.linkedin.com/in/alan-morais-4861322b0)
+>>>>>>> 34f7896e2ba6c7e49aae337f8afadf9d69e9c6df

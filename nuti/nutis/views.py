@@ -145,3 +145,6 @@ def processamento_dos_dados(data):
         valor_total_contratos += valor_inicial
 
     return orgao, valor_total_contratos
+
+
+

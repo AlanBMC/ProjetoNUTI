@@ -12,6 +12,18 @@ class HomeAPIView(APIView):
     """
     API responsável por lidar com a consulta de contratos e retornar os dados como resposta JSON.
     """
+    def get(self, request):
+        # Obtendo parâmetros da query string (ex: /api/home/?datainicio=2021-01-01&datafim=2021-12-31)
+        data_inicio = request.query_params.get('datainicio')
+        data_fim = request.query_params.get('datafim')
+        cnpj = request.query_params.get('cnpj')
+
+        if not data_inicio or not data_fim or not cnpj:
+            return Response({"error": "Todos os parâmetros (datainicio, datafim, cnpj) são obrigatórios."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Lógica de processamento aqui
+
+        return Response({"message": "Consulta realizada com sucesso!"})
     def post(self, request):
         url = "https://pncp.gov.br/api/consulta/v1/contratos"
         data_inicio = request.data.get('datainicio')

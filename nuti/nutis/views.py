@@ -6,12 +6,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from serializers import ConsultaContratoSerializer
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 class HomeAPIView(APIView):
     """
     API responsável por lidar com a consulta de contratos e retornar os dados como resposta JSON.
     """
+    @swagger_auto_schema(
+            operation_description="Consulta de contratos por CNPJ em intervalo de data de ATE um ano",
+            request_body=ConsultaContratoSerializer(),
+            responses={200: 'Retorna a lista de contratos', 400: 'erro de validação'},
+    )
     def get(self, request):
         # Obtendo parâmetros da query string (ex: /api/home/?datainicio=2021-01-01&datafim=2021-12-31)
         data_inicio = request.query_params.get('datainicio')

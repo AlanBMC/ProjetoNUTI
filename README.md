@@ -28,28 +28,28 @@ Este projeto foi desenvolvido como parte do teste prático para a Nuti, seguindo
 ## Screenshots
 
 ### tela inicial
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="print1.jpg" width="500px">
 
 ### Seção - pesquisa
 - Seção dedicica fornecer dados para busca de contratos
   
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="print 2.png" width="500px">
 
 ### Seção - resultado da pesquisa
 - Cards com scroll horizontal
   
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="print 3.png" width="500px">
 
 ### Seção - Modal: ver mais
 - Contratos com muitas merece uma atenção especial, entao foi decidido que seria melhor criar um modal para visualizção completa dos dados.
   
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="print 4.png" width="500px">
 
 ### Seção - procurar nos resultados da pesquisa
 - Dentro da pesquisa podemos querer ver um contrato em especifico, entao essa função criada para facilidade a usabilidade do site.
   
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="print5.png" width="500px">
+
 
 ## Sobre o autor
 
@@ -60,4 +60,4 @@ Este projeto foi desenvolvido como parte do teste prático para a Nuti, seguindo
 Me chamo Alan, sou estudante de Ciências da Computação na Universidade Federal de Mato Grosso (UFMT) e estou participando de um curso oferecido pela Cyber-edux. Neste repositório, apresento o Cardy, um sistema inovador de gerenciamento de tarefas e estudos projetado para melhorar a organização e eficiência de estudantes e profissionais.  |
 
 - **Email:** alanbrunomoraescosta18@hotmail.com
-- **LinkedIn:** [Alan's LinkedIn](https://www.linkedin.com/in/alan-morais-4861322b0)
+- **LinkedIn:** [Alan  LinkedIn](https://www.linkedin.com/in/alan-morais-4861322b0)

@@ -57,7 +57,7 @@ Este projeto foi desenvolvido como parte do teste prático para a Nuti, seguindo
 |  |  |
 |:-------------:|:------------------------------------------------------------:|
 |  <img src="EU2.jpg" width="150px"></br> **Alan Bruno Morais Costa** | 
-Me chamo Alan, sou estudante de Ciências da Computação na Universidade Federal de Mato Grosso (UFMT) e estou participando de um curso oferecido pela Cyber-edux. Neste repositório, apresento o Cardy, um sistema inovador de gerenciamento de tarefas e estudos projetado para melhorar a organização e eficiência de estudantes e profissionais.  |
+Me chamo Alan, sou estudante de Ciências da Computação na Universidade Federal de Mato Grosso (UFMT). Este repositório contém o projeto prático para o teste da Nuti. A Nuti é um projeto prático que funciona como consultor de contratos públicos, realizando consultas de contratos por intervalo de datas e CNPJ, além de otimizar a organização e busca por contratantes.  |
 
 - **Email:** alanbrunomoraescosta18@hotmail.com
 - **LinkedIn:** [Alan  LinkedIn](https://www.linkedin.com/in/alan-morais-4861322b0)

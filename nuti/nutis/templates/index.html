@@ -12,8 +12,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
 
 <body>
@@ -47,7 +45,7 @@
 
 
 
-  <!--  form para obter dados da api -->
+  <!--  INICIO: form para enviar dados e obter dados da api -->
 
   <section id="consultar" class="form-style">
     <div class="form-card">
@@ -66,6 +64,9 @@
       </form>
     </div>
   </section>
+  <!--  FIM: form para enviar dados e obter dados da api -->
+
+  <!-- Trecho que verifica se obteve resposta da api ou do banco de dados para redenrizar dados na tela.--> 
   {% if orgao %}
   <section id="dados-empresa">
     <div class="empresa-info">
@@ -97,7 +98,7 @@
         <p><strong>Valor:</strong> R$ {{ contrato.valor_inicial|floatformat:2 }}</p>
       </div>
 
-      <!-- Modal -->
+      <!-- INICIO: Modal -->
       <div class="modal fade" id="modalContrato{{ contrato.id }}" tabindex="-1"
         aria-labelledby="modalLabel{{ contrato.id }}" aria-hidden="true">
         <div class="modal-dialog">
@@ -118,13 +119,17 @@
           </div>
         </div>
       </div>
+      <!-- FIM: Modal -->
+
       {% endfor %}
     </div>
   </section>
 
   {% endif %}
+  <!-- FIM: Trecho que verifica se obteve resposta da api ou do banco de dados para redenrizar dados na tela --> 
 
 
+<!--INICIO: footer-->
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2024 UFMT - Fundação Universidade Federal de Mato Grosso</p>
@@ -133,6 +138,7 @@
       <p>Email: contato@ufmt.br</p>
     </div>
   </footer>
+<!--FIM: footer-->
 
   <script src="{% static 'js/home.js' %}"></script>
 </body>

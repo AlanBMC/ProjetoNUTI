@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
       listaContratos.appendChild(contratoDiv);
     });
   });
+  // INICIO: DOM que temporiza a mensagem de erro e success
   document.addEventListener("DOMContentLoaded", function () {
     // Suponha que as mensagens de sucesso ou erro estejam disponíveis
     const logElements = document.querySelectorAll('.error-log, .success-log');
@@ -32,48 +33,61 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 2000);
     });
   
-    // Insira aqui o código para preencher as informações de CNPJ, nome e contratos
   });
-  document.addEventListener("DOMContentLoaded", function () {
- 
-    // Renderizar todos os contratos inicialmente
-    renderContratos(contratos);
+    // FIM: DOM que temporiza a mensagem de erro e success
 
-    // Implementação da busca em tempo real
-    const searchInput = document.getElementById("search-input");
-    searchInput.addEventListener("input", function () {
-        const searchTerm = searchInput.value.toLowerCase();
-        const contratosFiltrados = contratos.filter(contrato => {
-            return contrato.fornecedor.toLowerCase().includes(searchTerm) ||
-                   contrato.objeto.toLowerCase().includes(searchTerm);
-        });
-        renderContratos(contratosFiltrados);
-    });
-});
-
-
+// INICIO : Filtro de busca - procura dentro dos resultados -> contratos -> retornando constantes os resultados com base nas entradas do usuário
 document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("search-input");
-    const contratos = Array.from(document.getElementsByClassName("contrato"));
+  // Renderizar todos os contratos inicialmente
+  renderContratos(contratos);
 
-    searchInput.addEventListener("input", function () {
-        const searchTerm = searchInput.value.toLowerCase();
+  // Implementação da busca em tempo real
+  const searchInput = document.getElementById("search-input");
+  searchInput.addEventListener("input", function () {
+      // Captura o termo de busca digitado pelo usuário, convertendo para letras minúsculas
+      const searchTerm = searchInput.value.toLowerCase();
 
-        contratos.forEach(contrato => {
-            const fornecedor = contrato.querySelector("p:nth-child(2)").textContent.toLowerCase();
-            const objeto = contrato.querySelector("p:nth-child(3) .objeto-text").textContent.toLowerCase();
+      // Filtra os contratos com base no termo de busca, verificando fornecedor ou objeto
+      const contratosFiltrados = contratos.filter(contrato => {
+          return contrato.fornecedor.toLowerCase().includes(searchTerm) ||
+                 contrato.objeto.toLowerCase().includes(searchTerm);
+      });
 
-            if (fornecedor.includes(searchTerm) || objeto.includes(searchTerm)) {
-                contrato.style.display = "";
-            } else {
-                contrato.style.display = "none";
-            }
-        });
-    });
+      // Renderiza os contratos filtrados com base na busca
+      renderContratos(contratosFiltrados);
+  });
 });
+
+// Filtro de busca alternativo, trabalhando diretamente com os elementos da página
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("search-input");
+  const contratos = Array.from(document.getElementsByClassName("contrato"));
+
+  searchInput.addEventListener("input", function () {
+      // Captura o termo de busca digitado pelo usuário, convertendo para letras minúsculas
+      const searchTerm = searchInput.value.toLowerCase();
+
+      // Itera sobre os contratos para verificar se o termo de busca está presente no fornecedor ou objeto
+      contratos.forEach(contrato => {
+          const fornecedor = contrato.querySelector("p:nth-child(2)").textContent.toLowerCase();
+          const objeto = contrato.querySelector("p:nth-child(3) .objeto-text").textContent.toLowerCase();
+
+          // Exibe ou oculta o contrato com base no termo de busca
+          if (fornecedor.includes(searchTerm) || objeto.includes(searchTerm)) {
+              contrato.style.display = ""; // Mostra o contrato
+          } else {
+              contrato.style.display = "none"; // Oculta o contrato
+          }
+      });
+  });
+});
+
+
+//INICIO: funcao para fazer um scroll na pagina quando acha os resultados, leva o usuario direto para seção de resultados.
 window.onload = function() {
     const section = document.querySelector('#dados-contratos');
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
 };
+//FIM: funcao para fazer um scroll na pagina quando acha os resultados, leva o usuario direto para seção de resultados.

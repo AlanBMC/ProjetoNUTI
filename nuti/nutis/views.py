@@ -17,6 +17,11 @@ class HomeAPIView(APIView):
     @swagger_auto_schema(
             operation_description="Consulta de contratos por CNPJ em intervalo de data de ATE um ano",
             request_body=ConsultaContratoSerializer(),
+                    manual_parameters=[
+                    openapi.Parameter('datainicio', openapi.IN_QUERY, description="Data de início (YYYY-MM-DD)", type=openapi.TYPE_STRING),
+                    openapi.Parameter('datafim', openapi.IN_QUERY, description="Data de fim (YYYY-MM-DD)", type=openapi.TYPE_STRING),
+                    openapi.Parameter('cnpj', openapi.IN_QUERY, description="CNPJ do órgão (somente números)", type=openapi.TYPE_STRING),
+                    ],
             responses={200: 'Retorna a lista de contratos', 400: 'erro de validação'},
     )
     def get(self, request):

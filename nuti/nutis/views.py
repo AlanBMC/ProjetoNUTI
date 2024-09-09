@@ -5,7 +5,7 @@ from datetime import datetime
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from serializers import ConsultaContratoSerializer
 
 
 class HomeAPIView(APIView):
@@ -26,10 +26,12 @@ class HomeAPIView(APIView):
         return Response({"message": "Consulta realizada com sucesso!"})
     def post(self, request):
         url = "https://pncp.gov.br/api/consulta/v1/contratos"
-        data_inicio = request.data.get('datainicio')
-        data_fim = request.data.get('datafim')
-        cnpj = request.data.get('cnpj')
-        cnpj_clean = ''.join(filter(str.isdigit, cnpj))
+        serializer = ConsultaContratoSerializer(data=request.data)
+        if serializer.is_valid():
+            # Se os dados forem válidos, você pode acessá-los com serializer.validated_data
+            data_inicio = serializer.validated_data['datainicio']
+            data_fim = serializer.validated_data['datafim']
+            cnpj_clean = serializer.validated_data['cnpj']
 
         # Converter as datas para 'yyyyMMdd'
         try:

@@ -2,6 +2,71 @@ from django.shortcuts import render
 import requests
 from .models import Orgao, Contrato
 from datetime import datetime
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+
+
+class HomeAPIView(APIView):
+    """
+    API responsável por lidar com a consulta de contratos e retornar os dados como resposta JSON.
+    """
+    def post(self, request):
+        url = "https://pncp.gov.br/api/consulta/v1/contratos"
+        data_inicio = request.data.get('datainicio')
+        data_fim = request.data.get('datafim')
+        cnpj = request.data.get('cnpj')
+        cnpj_clean = ''.join(filter(str.isdigit, cnpj))
+
+        # Converter as datas para 'yyyyMMdd'
+        try:
+            data_inicio_formatted = datetime.strptime(data_inicio, '%Y-%m-%d').strftime('%Y%m%d')
+            data_fim_formatted = datetime.strptime(data_fim, '%Y-%m-%d').strftime('%Y%m%d')
+        except ValueError:
+            return Response({"error": "Formato de data inválido."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Verificar se já existem contratos no banco de dados para o CNPJ e período especificado
+        contratos_existentes = Contrato.objects.filter(
+            orgao__cnpj=cnpj_clean,
+            data_vigencia_inicial__gte=data_inicio,
+            data_vigencia_final__lte=data_fim
+        )
+
+        if contratos_existentes.exists():
+            orgao = contratos_existentes.first().orgao
+            valor_total_contratos = sum(contrato.valor_inicial for contrato in contratos_existentes)
+            return Response({
+                'orgao': orgao.nome,
+                'cnpj': orgao.cnpj,
+                'contratos': [contrato.objeto for contrato in contratos_existentes],
+                'valor_total': valor_total_contratos
+            })
+
+        # Se não há dados no banco, fazer a requisição à API
+        parametros = {
+            'dataInicial': data_inicio_formatted,
+            'dataFinal': data_fim_formatted,
+            'cnpjOrgao': cnpj_clean,
+            'pagina': 1,
+            'tamanhoPagina': 10
+        }
+
+        try:
+            response = requests.get(url, params=parametros)
+            if response.status_code == 200:
+                data = response.json()
+                contratos = processamento_dos_dados(data)
+                return Response({
+                    'orgao': contratos[0].orgao.nome,
+                    'cnpj': contratos[0].orgao.cnpj,
+                    'contratos': [contrato.objeto for contrato in contratos],
+                    'valor_total': sum(contrato.valor_inicial for contrato in contratos)
+                })
+            else:
+                return Response({"error": "Erro ao buscar dados da API."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"error": f"Erro ao buscar dados: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def home(request):
     """

@@ -36,27 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
     // FIM: DOM que temporiza a mensagem de erro e success
 
-// INICIO : Filtro de busca - procura dentro dos resultados -> contratos -> retornando constantes os resultados com base nas entradas do usuário
-document.addEventListener("DOMContentLoaded", function () {
-  // Renderizar todos os contratos inicialmente
-  renderContratos(contratos);
-
-  // Implementação da busca em tempo real
-  const searchInput = document.getElementById("search-input");
-  searchInput.addEventListener("input", function () {
-      // Captura o termo de busca digitado pelo usuário, convertendo para letras minúsculas
-      const searchTerm = searchInput.value.toLowerCase();
-
-      // Filtra os contratos com base no termo de busca, verificando fornecedor ou objeto
-      const contratosFiltrados = contratos.filter(contrato => {
-          return contrato.fornecedor.toLowerCase().includes(searchTerm) ||
-                 contrato.objeto.toLowerCase().includes(searchTerm);
-      });
-
-      // Renderiza os contratos filtrados com base na busca
-      renderContratos(contratosFiltrados);
-  });
-});
 
 // Filtro de busca alternativo, trabalhando diretamente com os elementos da página
 document.addEventListener("DOMContentLoaded", function () {
